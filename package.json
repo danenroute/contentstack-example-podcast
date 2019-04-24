@@ -1,0 +1,10 @@
+{
+  "name": "podcast",
+  "version": "0.0.1",
+  "dependencies": {
+    "contentstack-express": "^3.1.9"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}

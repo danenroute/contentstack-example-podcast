@@ -1,0 +1,36 @@
+{# If you have a "Content Type" for footer in Contentstack then use get() view helper to retrieve footer entry. #}
+{# e.g. set footer = get("footer_content_type_id") #}
+{# And then render footer values using the {{footer.field_name}} #}
+
+{% set footer = get("footer") %}
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="copyright">{{footer.copyright}}</span>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          {% for social in footer.social -%}
+            <li class="list-inline-item">
+              <a href="{{social.url}}">
+                <i class="fab fa-{{social.icon | lower}}"></i>
+              </a>
+            </li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline quicklinks">
+          {% for link in footer.menu -%}
+            <li class="list-inline-item">
+              <a href="{{link.url}}">{{link.label}}</a>
+            </li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

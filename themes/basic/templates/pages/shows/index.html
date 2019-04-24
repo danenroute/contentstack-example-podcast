@@ -1,0 +1,44 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+<!-- Generic Page -->
+<section class="bg-light" style="padding: 150px 0 0 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">{{entry.title}}</h2>
+        <h4 class="section-heading text-muted">{{entry.autor}}</h4>
+        <h3 class="section-subheading text-muted">{{entry.description}}</h3>
+
+      </div>
+    </div>
+</section>
+
+<section style="padding: 50px 0 50px 0;">
+  <div class="container">
+    <div class="row">
+      {% for episode in entry.episodes -%}
+      <div class="col-lg-6">
+
+
+      <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{episode.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div>{{episode.date | date}}</div>
+    <div>{{episode.description}}</div>
+    <audio controls>
+      <source src="{{episode.audio.url}}" type="audio/x-m4a" />
+    </audio>
+  </div>
+</div>
+
+
+ </div>
+			{%- endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

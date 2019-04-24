@@ -1,0 +1,91 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+	<!-- Header -->
+  <header class="masthead" style="background-image: url({{entry.header.background.url}}?quality=40&format=pjpg&width=1200)">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-lead-in">{{entry.header.title}}</div>
+        <div class="intro-heading text-uppercase">{{entry.header.subtitle}}</div>
+        <!--a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a-->
+      </div>
+    </div>
+  </header>
+
+  <!-- Portfolio Grid -->
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">{{entry.section_programs.title}}</h2>
+          <h3 class="section-subheading text-muted">{{entry.section_programs.subtitle}}</h3>
+        </div>
+      </div>
+      <div class="row">
+
+      	{% for program in entry.section_programs.programs -%}
+					<div class="col-md-4 col-sm-6 portfolio-item">
+	          <a class="portfolio-link" href="{{program.url}}">
+	            <div class="portfolio-hover">
+	              <div class="portfolio-hover-content">
+	                <i class="fas fa-plus fa-3x"></i>
+	              </div>
+	            </div>
+	            <!--<img class="img-fluid" src="{{getAssetUrl(program.image)}}" alt="">-->
+              <img class="img-fluid" src="{{program.image.url}}?quality=40&format=pjpg&width=700" alt="">
+	          </a>
+	          <div class="portfolio-caption">
+	            <h4>{{program.title}}</h4>
+	            <p class="text-muted">{{program.subtitle}}</p>
+	          </div>
+	        </div>
+				{%- endfor %}
+
+
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted">{{entry.section_programs.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">{{entry.section_staff.title}}</h2>
+          <h3 class="section-subheading text-muted">{{entry.section_staff.subtitle}}</h3>
+        </div>
+      </div>
+      <div class="row">
+      	{% for staff in entry.section_staff.staff -%}
+	        <div class="col-sm-4">
+	          <div class="team-member">
+	            <img class="mx-auto rounded-circle" src="{{staff.avatar.url}}?quality=40&format=pjpg&width=400" alt="">
+	            <h4>{{staff.name}}</h4>
+	            <p class="text-muted">{{staff.position}}</p>
+	            <ul class="list-inline social-buttons">
+	            	{% for social in staff.social -%}
+	            		<li class="list-inline-item">
+		                <a href="{{social.url}}">
+		                  <i class="fab fa-{{social.select | lower}}"></i>
+		                </a>
+		              </li>
+	            	{%- endfor %}
+	            </ul>
+	          </div>
+	        </div>
+				{%- endfor %}
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class="large text-muted">{{entry.section_staff.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

@@ -59,3 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# contentstack express
+_content
+_logs
+
+# npm
+package-lock.json
+
+# mac
+.DS_Store
